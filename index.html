@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Currency converter</title>
+ <style>
+ #cont{
+ 	background-image:url("back.jpg");
+  background-color:rgba(0, 34, 114, 0.65);
+ 	height: 500px;
+ 	width: 1520px;
+      border-bottom: 5px solid rgb(252, 184, 19);
+
+ }
+ h1{
+ color: #fff;
+ text-align: center;
+ 
+
+ }
+#want{
+  color: #fff;
+ opacity: 0.6;
+ background-color: #000;
+    float: right;
+    margin-left: 200px;
+    margin-right: 80px;
+    height: 400px;
+    width: 500px;
+    text-align: center;
+} 
+#have{
+
+color: white;
+
+ background-color: rgba(0, 34, 114, 0.65);
+	    width: 1200px;
+    margin-left: 100px;
+    float: left;
+    height: 300px;
+    text-align: center;
+    padding: 5px 32px 30px;
+    border-radius: 0px;
+}
+}
+input{
+
+ background-image: none;
+	    width: 430px;
+    height: 50px;
+    font-size: 35px;
+}
+#want h2{
+
+	margin-left: -250px;
+}
+#have h2{
+  margin-left: -250px;
+}
+.money{
+  margin-top: 30px;
+}
+#want p{
+       margin-left: -140px;
+    margin-bottom: -25px;
+    font-size: 24px;
+
+}
+#have p{
+       margin-left: -140px;
+    margin-bottom: -25px;
+    font-size: 24px;
+
+}
+.money{
+  margin-top:100px;
+    box-sizing: border-box;
+    color: rgb(0, 34, 114);
+    font-size: 2.2em;
+    height: 60px;
+    padding-left: 20px;
+    width: 25%;
+    background: rgb(255, 255, 255);
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 10px;
+}
+
+#havetest{
+  float:left;
+  margin-left:20px;
+  font-size:20px;
+}
+#haveid{
+  float:left;
+}
+#wtest{
+  float:left;
+   margin-left:40px;
+   font-size:20px;
+}
+#arrow{
+  float:left;
+  width:20px;
+  margin-top:100px;
+  margin-left:5px;
+}
+#submit{
+box-sizing: border-box;
+    color: rgb(0, 34, 114);
+    font-size: 2.2em;
+    height: 60px;
+    padding-left: 20px;
+    background-color:rgb(252, 184, 19);
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 10px;
+    margin-top:100px;
+    width: 7%;
+    margin-left:-60px;
+}
+</style>
+<script src="https://kit.fontawesome.com/42a8d264f6.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div id="cont">
+   	<h1>The World's Trusted Currency Authority</h1>
+   	<div id="have">
+    <input type="search" name="have" class="money" id="haveid">
+   		<div ><select id="havetest" class="money" ></select></div>
+      <i class="fas fa-exchange-alt fa-3x" id="arrow"></i>
+   		<div ><select id="wtest" class="money"></select></div>
+      <button id="submit"><i class="fas fa-chevron-right"></i></button>
+   		
+   	</div>
+ </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    queryURL ="https://gist.githubusercontent.com/mddenton/062fa4caf150bdf845994fc7a3533f74/raw/b0d1722b04b0a737aade2ce6e055263625a0b435/Common-Currency.json";
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).done(function(response) { 
+     var result= JSON.parse(response);
+     var name = " ";
+     var code="";
+     $(document).ready(function(){
+             
+
+      for(x in result){
+           name += result[x] + "<br>";
+          code += result[x] + "<br>";
+      
+           $("#havetest").append("<option>"+result[x].code+" "+" "+result[x].name+"</option>");
+          $("#wtest").append("<option>"+result[x].code+" "+result[x].name+"</option>");
+       
+     }
+
+           
+      });
+     
+  });
+
+      
+     
+</script>
+
+</body>
+</html>
